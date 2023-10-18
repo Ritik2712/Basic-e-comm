@@ -21,7 +21,25 @@ const getProductById = async (req, res) => {
   }
 };
 
+const addProduct = async (req, res) => {
+  const { name, description, price, countInStock, imageUrl } = req.body;
+  try {
+    await Product.create({
+      ...req.body,
+      price: parseInt(price),
+      countInStock: parseInt(countInStock),
+    });
+    res.status(201).send("Product Added");
+    return;
+  } catch (err) {
+    console.log("Error : ", err);
+    res.status(500).json({ message: "Server Error" });
+    return;
+  }
+};
+
 module.exports = {
   getProducts,
   getProductById,
+  addProduct,
 };
