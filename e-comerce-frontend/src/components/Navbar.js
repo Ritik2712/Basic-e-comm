@@ -42,7 +42,7 @@ const Navbar = ({ click }) => {
         </li>
 
         <li>
-          <Link to="/">Shop</Link>
+          <Link to="/add">Add</Link>
         </li>
 
         {!user.userInfo.isLogin ? (

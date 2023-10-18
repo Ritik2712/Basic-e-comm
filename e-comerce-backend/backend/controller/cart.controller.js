@@ -3,7 +3,6 @@ const Cart = require('../models/Cart')
 const getCartProducts = async (req, res) => {
   try {
     const carts = await Cart.find({userId: req.user._id}).populate('productId')
-    // console.log(carts)
     res.status(200).send({status: 'ok', carts})
   } catch (err) {
     console.log(err)

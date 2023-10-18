@@ -13,6 +13,13 @@ function AddProductScreen() {
   const [loading, setLoading] = useState(false);
 
   const _handleSubmit = useCallback(async () => {
+    const urlRegX =
+      /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+    console.log(imageUrl.match(urlRegX));
+    if (!imageUrl.match(urlRegX)) {
+      alert("Add a valid url");
+      return;
+    }
     if (
       (name.length > 2 && countInStock > 0 && imageUrl.length > 2,
       description.length > 2,
